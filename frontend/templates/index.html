@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>彈幕肉鴿 · Bullet Hell Roguelite</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="page">
+    <div class="game-wrap">
+      <!-- 左上角 HUD：波次與分數 -->
+      <div class="hud-topleft" aria-live="polite">
+        <span id="waveDisplay">Wave —</span>
+        <span id="scoreDisplay">Score 0</span>
+      </div>
+
+      <!-- Boss 血條（第 5 波時顯示） -->
+      <div id="bossBar" class="boss-bar hidden" aria-hidden="true">
+        <span class="boss-bar-label">BOSS</span>
+        <div class="boss-bar-track">
+          <div id="bossBarFill" class="boss-bar-fill"></div>
+        </div>
+      </div>
+
+      <canvas id="gameCanvas" width="800" height="600" tabindex="0"></canvas>
+
+      <!-- 狀態機 overlay：MENU / GAME_OVER / WIN -->
+      <div id="overlay" class="overlay hidden">
+        <div class="overlay-panel">
+          <h2 id="overlayTitle">彈幕肉鴿</h2>
+          <p id="overlayMessage"></p>
+          <button type="button" id="overlayBtn" class="btn-primary">開始遊戲</button>
+        </div>
+      </div>
+    </div>
+    <p class="footer-hint">方向鍵移動 · 自動射擊 · C 引擎 + Flask</p>
+  </div>
+  <script src="{{ url_for('static', filename='game.js') }}"></script>
+</body>
+</html>
