@@ -1,0 +1,173 @@
+/* 極簡 UI：深色背景 + 中央 Canvas */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: #0a0c12;
+  color: #e8eaed;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.game-wrap {
+  position: relative;
+  width: 800px;
+  max-width: 100%;
+}
+
+#gameCanvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #12151f;
+  border: 2px solid #2a3142;
+  border-radius: 4px;
+  outline: none;
+}
+
+#gameCanvas:focus {
+  border-color: #5c7cfa;
+}
+
+/* 左上角 HUD */
+.hud-topleft {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  pointer-events: none;
+  text-shadow: 0 1px 2px #000;
+}
+
+#waveDisplay {
+  color: #74c0fc;
+}
+
+#scoreDisplay {
+  color: #ffd43b;
+  font-size: 13px;
+}
+
+/* Boss 血條（畫面上方） */
+.boss-bar {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  width: min(420px, 90%);
+  padding: 6px 10px;
+  background: rgba(20, 0, 30, 0.85);
+  border: 1px solid #862e9c;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.boss-bar.hidden {
+  display: none;
+}
+
+.boss-bar-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #e599f7;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.boss-bar-track {
+  height: 12px;
+  background: #2d1b36;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.boss-bar-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #9c36b5, #e64980);
+  border-radius: 6px;
+  transition: width 0.08s linear;
+}
+
+/* 狀態 overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 8, 16, 0.72);
+  border-radius: 4px;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.overlay-panel {
+  text-align: center;
+  padding: 2rem 2.5rem;
+  background: #1a1f2e;
+  border: 1px solid #3d4663;
+  border-radius: 12px;
+  max-width: 90%;
+}
+
+.overlay-panel h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.5rem;
+}
+
+.overlay-panel p {
+  margin: 0 0 1.25rem;
+  color: #9aa0a6;
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  padding: 0.65rem 1.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: #5c7cfa;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #4c6ef5;
+}
+
+.footer-hint {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: #5c6370;
+}
